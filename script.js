@@ -12,6 +12,6 @@ console.log('Loaded pokemon', currentPokemon);
 
 function renderPokemonInfo(){
   document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
-  document.getElementById('pokemonPicture').src = currentPokemon['sprites']['front_shiny'];
-
+  document.getElementById('pokemonPicture').src = currentPokemon['sprites']['other']['dream_world']['front_default'];
+//['other']['dream_world']['front_default']
 }
