@@ -11,7 +11,7 @@ async function init() {
 
 async function render() {
   document.getElementById('pokemonContent').innerHTML = '';
-  for (let i = 1; i < 9; i++) {
+  for (let i = 1; i < 19; i++) {
     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
     let response = await fetch(url);
     currentPokemon = await response.json();
