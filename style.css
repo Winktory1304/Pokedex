@@ -37,7 +37,7 @@ body {
 
 }
 
-#pokedex {
+.pokedex {
   min-height: 250px;
   background-color: red;
   display: flex;
