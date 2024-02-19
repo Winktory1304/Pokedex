@@ -33,10 +33,11 @@ async function init() {
 
 async function render() {
   document.getElementById('pokemonContent').innerHTML = '';
-  for (let i = 1; i < 80; i++) {
+  for (let i = 1; i < 5; i++) {
     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
     let response = await fetch(url);
     currentPokemon = await response.json();
+    let renderPokemonIndex = currentPokemon['id']
     let renderTypesAmount = currentPokemon['types'];
     let renderPokemonName = currentPokemon['name'];
     let renderPokemonPicture = currentPokemon['sprites']['other']['dream_world']['front_default'];
@@ -56,11 +57,13 @@ async function render() {
       </div>
       <div class="info-container">
         <div class="types">
-          <p>${renderPokemonType1}</p><p>${renderPokemonType2}</p>
+          <p class="mt-16px p-border">${renderPokemonType1}</p>
+          <p>${renderPokemonType2}</p>
         </div>
-          </div>
+        <div class="number-container">#${renderPokemonIndex}</div>
+         <div class="more-information">Click Pokemon for more informations</div>
       </div>`;
-      // Hintergrundfarbe wird nach Type angepasst
-    document.getElementById(`pokedex${i}`).style.backgroundColor = pokemonTypes[renderPokemonType1]; 
+    // Hintergrundfarbe wird nach Type angepasst
+    document.getElementById(`pokedex${i}`).style.backgroundColor = pokemonTypes[renderPokemonType1];
   }
 }
