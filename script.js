@@ -33,7 +33,7 @@ async function init() {
 
 async function render() {
   document.getElementById('pokemonContent').innerHTML = '';
-  for (let i = 1; i < 8; i++) {
+  for (let i = 1; i < 80; i++) {
     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
     let response = await fetch(url);
     currentPokemon = await response.json();
@@ -52,12 +52,12 @@ async function render() {
     /*html*/`<div class="main-card">
       <div id="pokedex${i}" class="pokedex">
       <h1 class="pokemon-name">${renderPokemonName}</h1>
+      <img class="pokemonPicture" src="${renderPokemonPicture}" alt="">
       </div>
       <div class="info-container">
         <div class="types">
           <p>${renderPokemonType1}</p><p>${renderPokemonType2}</p>
         </div>
-          <img class="pokemonPicture" src="${renderPokemonPicture}" alt="">
           </div>
       </div>`;
       // Hintergrundfarbe wird nach Type angepasst
