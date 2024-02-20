@@ -48,12 +48,16 @@ async function render() {
     if (renderTypesAmount.length > 1) {
       renderPokemonType2 = currentPokemon['types']['1']['type']['name']
     }
-
+// Img wird mit Daten Attributen versheen die in der der renderDetailView wieder aufgerufen werden
     document.getElementById('pokemonContent').innerHTML +=
     /*html*/`<div class="main-card">
       <div id="pokedex${i}" class="pokedex">
       <h1 class="pokemon-name">${renderPokemonName}</h1>
-      <img class="pokemonPicture" src="${renderPokemonPicture}" alt="">
+      <img id="pokekomPicture${i}" class="pokemonPicture" src="${renderPokemonPicture}" 
+              data-name="${renderPokemonName}" 
+              data-picture="${renderPokemonPicture}" 
+              data-index="${renderPokemonIndex}" 
+              onclick="renderDetailView(${i})">      
       </div>
       <div class="info-container">
         <div class="types">
@@ -61,9 +65,33 @@ async function render() {
           <p>${renderPokemonType2}</p>
         </div>
         <div class="number-container">#${renderPokemonIndex}</div>
-         <div class="more-information">Click Pokemon for more informations</div>
+          <div class="more-information">Click Pokemon for more informations</div>
       </div>`;
     // Hintergrundfarbe wird nach Type angepasst
     document.getElementById(`pokedex${i}`).style.backgroundColor = pokemonTypes[renderPokemonType1];
   }
+}
+
+function renderDetailView(i) {
+  //Daten aus dem Bild wieder holen
+  let element = document.getElementById(`pokekomPicture${i}`);
+  let name = element.getAttribute('data-name');
+  let picture = element.getAttribute('data-picture');
+  // let index = element.getAttribute('data-index');
+  document.getElementById('pokemonContent').innerHTML +=
+    /*html*/`
+    <div id="detailView" class="detail-view">
+      <div class="detail-view-child">
+        <img class="pokemonPicture" src="${picture}" alt="">
+        <div>${name}</div>
+        <div>#${i}</div>
+        <button onclick="backToPage()">zurück</button>
+      </div>
+  </div>
+  `
+
+}
+
+function backToPage() {
+  document.getElementById('detailView').classList.add('d-none');
 }
