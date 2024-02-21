@@ -4,6 +4,8 @@ body {
   box-sizing: border-box;
   flex-direction: column;
 }
+
+
 .navbar-color{
   background-color: #db3c36;
 }
@@ -142,12 +144,29 @@ h1::first-letter {
 .detail-view-child{
   display: flex;
   flex-direction: column;
-  height: 800px;
-  width: 450px;
+  height: 100%;
+  width: 100%;
   background-color: white;
   align-items: center;
 }
 
 .d-none{
   display: none;
+}
+.NavDetailCard{
+  display: flex;
+  height: 3em;;
+  width: 100%;
+  background-color: #db3c36;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.navBackArrow{
+  height: 30px;
+    
+}
+.navPokedex{
+ margin: 0;
+  
 }

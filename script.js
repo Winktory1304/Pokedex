@@ -82,12 +82,13 @@ function renderDetailView(i) {
     /*html*/`
     <div id="detailView" class="detail-view">
       <div class="detail-view-child">
-        <img class="pokemonPicture" src="${picture}" alt="">
+        <nav></nav>
         <div>${name}</div>
+        <img class="pokemonPicture" src="${picture}" alt="">
         <div>#${i}</div>
         <button onclick="backToPage()">zurück</button>
       </div>
-  </div>
+    </div>
   `
 
 }
