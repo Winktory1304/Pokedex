@@ -109,11 +109,36 @@ h1::first-letter {
   justify-content: center;
 
 }
+.pokemonPicture {
+  display: flex;
+  float: left;
+  /* margin-top: -120px; */
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+}
+
 
 .pokemonPicture:hover {
   transform: scale(1.2);
 
 }
+table.InfoTable1 {
+  margin-top: 48px;
+  margin-bottom: 48px;
+  
+}
+table.InfoTable1 thead th {
+  font-weight: normal;
+  
+}
+th, td {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
 
 
 /*Detailview */
@@ -181,6 +206,9 @@ h1::first-letter {
 .childInfocontainer1 {
   border: 5px solid blue;
   min-width: 30%;
+  display: flex;
+  justify-content: center;
+  
 }
 
 
@@ -199,4 +227,5 @@ h1::first-letter {
 .childInfocontainer3 {
   border: 5px solid green;
   min-width: 30%;
+  display: flex;
 }
