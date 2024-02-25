@@ -29,9 +29,6 @@ async function init() {
     await render();
 }
 
-
-
-
 async function render() {
     document.getElementById('pokemonContent').innerHTML = '';
     for (let i = 1; i < 5; i++) {
@@ -41,16 +38,6 @@ async function render() {
         allPokemon.push(currentPokemon);
         let renderPokemonIndex = currentPokemon['id']
         let renderTypesAmount = currentPokemon['types'];
-        let renderPokemonName = currentPokemon['name'];
-        let renderPokemonPicture = currentPokemon['sprites']['other']['dream_world']['front_default'];
-        let renderPokemonHP = currentPokemon['stats']['0']['base_stat'];
-        let renderPokemonAttack = currentPokemon['stats']['1']['base_stat'];
-        let renderPokemonDefence = currentPokemon['stats']['2']['base_stat'];
-        let renderPokemonSpAttack = currentPokemon['stats']['3']['base_stat'];
-        let renderPokemonSpDefence = currentPokemon['stats']['4']['base_stat'];
-        let renderPokemonSpeed = currentPokemon['stats']['5']['base_stat'];
-        let renderPokemonWeight = currentPokemon['weight'];
-        let renderPokemonHeight = currentPokemon['height'];
         let renderPokemonType1 = currentPokemon['types']['0']['type']['name'];
         let renderPokemonType2 = '';
 
@@ -61,32 +48,18 @@ async function render() {
         // Img wird mit Daten Attributen versheen die in der der renderDetailView wieder aufgerufen werden
         document.getElementById('pokemonContent').innerHTML +=
         /*html*/`<div class="main-card">
-                  <div id="pokedex${i}" class="pokedex">
-                  <h1 class="pokemon-name">${renderPokemonName}</h1>
-                  <img id="pokekomPicture${i}" class="pokemonPicture" src="${renderPokemonPicture}" 
-              data-name="${renderPokemonName}" 
-              data-picture="${renderPokemonPicture}"
-              data-PokemonTyp1 ="${renderPokemonType1}"
-              data-PokemonTyp2 ="${renderPokemonType2}"
-              data-PokemonHP = "${renderPokemonHP}"
-              data-PokemonAttack = "${renderPokemonAttack}"
-              data-PokemonDefence = "${renderPokemonDefence}"
-              data-PokemonSpAttack = "${renderPokemonSpAttack}"
-              data-PokemonSpDefence = "${renderPokemonSpDefence}"
-              data-PokemonSpeed = "${renderPokemonSpeed}"
-              data-PokemonWeight = "${renderPokemonWeight}"
-              data-PokemonHeight = "${renderPokemonHeight}"
-
-              onclick="renderDetailView(${i})">      
-      </div>
-      <div class="info-container">
-        <div class="types">
-          <p class="mt-16px p-border">${renderPokemonType1}</p>
-          <p>${renderPokemonType2}</p>
-        </div>
-        <div class="number-container">#${renderPokemonIndex}</div>
-          <div class="more-information">Click Pokemon for more informations</div>
-      </div>`;
+                    <div id="pokedex${i}" class="pokedex">
+                        <h1 class="pokemon-name">${currentPokemon['name']}</h1>
+                        <img id="pokekomPicture${i}" class="pokemonPicture" src="${currentPokemon['sprites']['other']['dream_world']['front_default']}" onclick="renderDetailView(${i})">      
+                    </div>
+                    <div class="info-container">
+                    <div class="types">
+                        <p class="mt-16px p-border">${renderPokemonType1}</p>
+                        <p>${renderPokemonType2}</p>
+                    </div>
+                    <div class="number-container">#${renderPokemonIndex}</div>
+                    <div class="more-information">Click Pokemon for more informations</div>
+                </div>`;
         // Hintergrundfarbe wird nach Type angepasst
         document.getElementById(`pokedex${i}`).style.backgroundColor = pokemonTypes[renderPokemonType1];
     }
