@@ -41,6 +41,14 @@ async function render() {
     let renderTypesAmount = currentPokemon['types'];
     let renderPokemonName = currentPokemon['name'];
     let renderPokemonPicture = currentPokemon['sprites']['other']['dream_world']['front_default'];
+    let renderPokemonHP = currentPokemon['stats']['0']['base_stat'];
+    let renderPokemonAttack = currentPokemon['stats']['1']['base_stat'];
+    let renderPokemonDefence = currentPokemon['stats']['2']['base_stat'];
+    let renderPokemonSpAttack = currentPokemon['stats']['3']['base_stat'];
+    let renderPokemonSpDefence = currentPokemon['stats']['4']['base_stat'];
+    let renderPokemonSpeed = currentPokemon['stats']['5']['base_stat'];
+    let renderPokemonWeight = currentPokemon['weight'];
+    let renderPokemonHeight = currentPokemon['height'];
     let renderPokemonType1 = currentPokemon['types']['0']['type']['name'];
     let renderPokemonType2 = '';
 
@@ -48,15 +56,25 @@ async function render() {
     if (renderTypesAmount.length > 1) {
       renderPokemonType2 = currentPokemon['types']['1']['type']['name']
     }
-// Img wird mit Daten Attributen versheen die in der der renderDetailView wieder aufgerufen werden
+    // Img wird mit Daten Attributen versheen die in der der renderDetailView wieder aufgerufen werden
     document.getElementById('pokemonContent').innerHTML +=
     /*html*/`<div class="main-card">
       <div id="pokedex${i}" class="pokedex">
       <h1 class="pokemon-name">${renderPokemonName}</h1>
       <img id="pokekomPicture${i}" class="pokemonPicture" src="${renderPokemonPicture}" 
               data-name="${renderPokemonName}" 
-              data-picture="${renderPokemonPicture}" 
-              data-index="${renderPokemonIndex}" 
+              data-picture="${renderPokemonPicture}"
+              data-PokemonTyp1 ="${renderPokemonType1}"
+              data-PokemonTyp2 ="${renderPokemonType2}"
+              data-PokemonHP = "${renderPokemonHP}"
+              data-PokemonAttack = "${renderPokemonAttack}"
+              data-PokemonDefence = "${renderPokemonDefence}"
+              data-PokemonSpAttack = "${renderPokemonSpAttack}"
+              data-PokemonSpDefence = "${renderPokemonSpDefence}"
+              data-PokemonSpeed = "${renderPokemonSpeed}"
+              data-PokemonWeight = "${renderPokemonWeight}"
+              data-PokemonHeight = "${renderPokemonHeight}"
+
               onclick="renderDetailView(${i})">      
       </div>
       <div class="info-container">
@@ -72,27 +90,9 @@ async function render() {
   }
 }
 
-function renderDetailView(i) {
-  //Daten aus dem Bild wieder holen
-  let element = document.getElementById(`pokekomPicture${i}`);
-  let name = element.getAttribute('data-name');
-  let picture = element.getAttribute('data-picture');
-  // let index = element.getAttribute('data-index');
-  document.getElementById('pokemonContent').innerHTML +=
-    /*html*/`
-    <div id="detailView" class="detail-view">
-      <div class="detail-view-child">
-        <nav></nav>
-        <div>${name}</div>
-        <img class="pokemonPicture" src="${picture}" alt="">
-        <div>#${i}</div>
-        <button onclick="backToPage()">zurück</button>
-      </div>
-    </div>
-  `
 
-}
 
 function backToPage() {
   document.getElementById('detailView').classList.add('d-none');
 }
+
