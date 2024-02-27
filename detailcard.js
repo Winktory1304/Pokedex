@@ -54,7 +54,7 @@ function renderDetailView(i) {
                                 <td>HP</td>
                                 <td class="infoTable3">
                                     <div class="progress witdh-100px">
-                                        <div id="progressBarHP" class="progress-bar progress-bar-striped bg-warning" role="progressbar"
+                                        <div id="progressBarHP" class="progress-bar text-black progress-bar-striped bg-warning fs-5" role="progressbar"
                                             style="width: ${detailLoadedPokemon['stats']['0']['base_stat']}%"
                                             aria-valuenow="${detailLoadedPokemon['stats']['0']['base_stat']}" aria-valuemin="0" aria-valuemax="100">${detailLoadedPokemon['stats']['0']['base_stat']}</div>
                                     </div>
@@ -64,7 +64,7 @@ function renderDetailView(i) {
                                 <td>Attack</td>
                                 <td class="infoTable3">
                                     <div class="progress">
-                                        <div id="progressBarAttack" class="progress-bar progress-bar-striped bg-warning" role="progressbar"
+                                        <div id="progressBarAttack" class="progress-bar text-black progress-bar-striped bg-warning fs-5" role="progressbar"
                                             style="width: ${detailLoadedPokemon['stats']['1']['base_stat']}%"
                                             aria-valuenow="${detailLoadedPokemon['stats']['1']['base_stat']}" aria-valuemin="0" aria-valuemax="100">${detailLoadedPokemon['stats']['1']['base_stat']}</div>
                                     </div>
@@ -74,7 +74,7 @@ function renderDetailView(i) {
                                 <td>Defence</td>
                                 <td class="infoTable3">
                                     <div class="progress">
-                                        <div id="progressBarDefence" class="progress-bar progress-bar-striped bg-warning" role="progressbar"
+                                        <div id="progressBarDefence" class="progress-bar text-black progress-bar-striped bg-warning fs-5" role="progressbar"
                                             style="width: ${detailLoadedPokemon['stats']['2']['base_stat']}%"
                                             aria-valuenow="${detailLoadedPokemon['stats']['2']['base_stat']}" aria-valuemin="0" aria-valuemax="100">${detailLoadedPokemon['stats']['2']['base_stat']}</div>
                                     </div>
@@ -84,7 +84,7 @@ function renderDetailView(i) {
                                 <td>Sp.Attack</td>
                                 <td class="infoTable3">
                                     <div class="progress">
-                                        <div id="progressBarSpAttack" class="progress-bar progress-bar-striped bg-warning " role="progressbar"
+                                        <div id="progressBarSpAttack" class="progress-bar text-black progress-bar-striped bg-warning fs-5 " role="progressbar"
                                             style="width: ${detailLoadedPokemon['stats']['3']['base_stat']}%"
                                             aria-valuenow="${detailLoadedPokemon['stats']['3']['base_stat']}" aria-valuemin="0" aria-valuemax="100">${detailLoadedPokemon['stats']['3']['base_stat']}</div>
                                     </div>
@@ -94,7 +94,7 @@ function renderDetailView(i) {
                                 <td>Sp.Defence</td>
                                 <td class="infoTable3">
                                     <div class="progress">
-                                        <div id="progressBarSpDefence" class="progress-bar progress-bar-striped bg-warning" role="progressbar"
+                                        <div id="progressBarSpDefence" class="progress-bar text-black progress-bar-striped bg-warning fs-5" role="progressbar"
                                             style="width: ${detailLoadedPokemon['stats']['4']['base_stat']}%"
                                             aria-valuenow="${detailLoadedPokemon['stats']['4']['base_stat']}" aria-valuemin="0" aria-valuemax="100">${detailLoadedPokemon['stats']['4']['base_stat']}</div>
                                     </div>
@@ -104,7 +104,7 @@ function renderDetailView(i) {
                                 <td>Speed</td>
                                 <td class="infoTable3">
                                     <div class="progress">
-                                        <div id="progressBarSpeed" class="progress-bar progress-bar-striped bg-warning" role="progressbar"
+                                        <div id="progressBarSpeed" class="progress-bar text-black progress-bar-striped bg-warning fs-5 " role="progressbar"
                                             style="width: ${detailLoadedPokemon['stats']['5']['base_stat']}%"
                                             aria-valuenow="${detailLoadedPokemon['stats']['5']['base_stat']}" aria-valuemin="0" aria-valuemax="100">${detailLoadedPokemon['stats']['5']['base_stat']}</div>
                                     </div>
