@@ -1,3 +1,4 @@
+let morePokemonToLoad =20;
 let currentPokemon;
 let allPokemon = [];
 let pokemonTypes = {
@@ -24,29 +25,37 @@ let pokemonTypes = {
 
 
 async function init() {
-    // await loadPokemon()
+    await loadPokemon(0);
     // await renderPokemonInfo();
     await render();
 }
 
-async function render() {
+
+async function loadPokemon(j) {
     document.getElementById('pokemonContent').innerHTML = '';
-    for (let i = 1; i < 5; i++) {
+    let start = 20;
+    for (let i = 1; i < start + j; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
         allPokemon.push(currentPokemon);
-        let renderPokemonIndex = currentPokemon['id']
-        let renderTypesAmount = currentPokemon['types'];
-        let renderPokemonType1 = currentPokemon['types']['0']['type']['name'];
-        let renderPokemonType2 = '';
+        render(i)
+        
+    }
+}
 
-        //Überprüfen, ob renderPokemonType2 einen Typ besitzt
-        if (renderTypesAmount.length > 1) {
-            renderPokemonType2 = currentPokemon['types']['1']['type']['name']
-        }
-        // Img wird mit Daten Attributen versheen die in der der renderDetailView wieder aufgerufen werden
-        document.getElementById('pokemonContent').innerHTML +=
+function render(i) {
+
+    let renderPokemonIndex = currentPokemon['id']
+    let renderTypesAmount = currentPokemon['types'];
+    let renderPokemonType1 = currentPokemon['types']['0']['type']['name'];
+    let renderPokemonType2 = '';
+    //Überprüfen, ob renderPokemonType2 einen Typ besitzt
+    if (renderTypesAmount.length > 1) {
+        renderPokemonType2 = currentPokemon['types']['1']['type']['name']
+    }
+    // Img wird mit Daten Attributen versheen die in der der renderDetailView wieder aufgerufen werden
+    document.getElementById('pokemonContent').innerHTML +=
         /*html*/`<div class="main-card">
                     <div id="pokedex${i}" class="pokedex">
                         <h1 class="pokemon-name">${currentPokemon['name']}</h1>
@@ -60,9 +69,13 @@ async function render() {
                     <div class="number-container">#${renderPokemonIndex}</div>
                     <div class="more-information">Click Pokemon for more informations</div>
                 </div>`;
-        // Hintergrundfarbe wird nach Type angepasst
-        document.getElementById(`pokedex${i}`).style.backgroundColor = pokemonTypes[renderPokemonType1];
-    }
+    // Hintergrundfarbe wird nach Type angepasst
+    document.getElementById(`pokedex${i}`).style.backgroundColor = pokemonTypes[renderPokemonType1];
+}
+
+function load20More(){
+    morePokemonToLoad += 20;
+    loadPokemon(morePokemonToLoad);
 }
 
 
