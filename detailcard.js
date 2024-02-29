@@ -7,8 +7,8 @@ function renderDetailView(i) {
     if (renderTypesAmount.length > 1) {
         renderPokemonType2 = detailLoadedPokemon['types']['1']['type']['name'];
     }
-
-    document.getElementById('pokemonContent').innerHTML +=
+    document.getElementById('detailViewContent').innerHTML = '';
+    document.getElementById('detailViewContent').innerHTML +=
         /*html*/ `
     <div id="detailView${i}" class="detail-view">
         <nav class="NavDetailCard">

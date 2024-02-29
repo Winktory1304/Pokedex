@@ -34,9 +34,9 @@ async function init() {
 async function loadPokemon(twentyMore) {
     document.getElementById('pokemonContent').innerHTML = '';
     let start = 1;
-    let end = 1;
+    let end = 5;
     for (let i = start; i <= end + twentyMore; i++) {
-        let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
         allPokemon.push(currentPokemon);
