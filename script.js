@@ -5,7 +5,7 @@ let pokemonTypes = {
     'normal': { 'color': '#A8A878', 'img': '/img/normal.png' },
     'fire': { 'color': '#F08030', 'img': '/img/fire.png' },
     'water': { 'color': '#6890F0', 'img': '/img/water.png' },
-    'electric': { 'color': '#F8D030', 'img':'/img/electric.png' },
+    'electric': { 'color': '#F8D030', 'img': '/img/electric.png' },
     'grass': { 'color': '#78C850', 'img': '/img/grass.png' },
     'ice': { 'color': '#98D8D8', 'img': '/img/ice.png' },
     'fighting': { 'color': '#C03028', 'img': '/img/fighting.png' },
@@ -24,7 +24,6 @@ let pokemonTypes = {
 };
 
 
-
 async function init() {
     await loadPokemon(0);
     // await renderPokemonInfo();
@@ -32,30 +31,29 @@ async function init() {
 }
 
 
-async function loadPokemon(j) {
+async function loadPokemon(twentyMore) {
     document.getElementById('pokemonContent').innerHTML = '';
-    for (let i = 0; i <= 19 + j; i++) {
+    let start = 1;
+    let end = 1;
+    for (let i = start; i <= end + twentyMore; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
-        
         allPokemon.push(currentPokemon);
-        render(i, i);
-        
+        render(currentPokemon, i - 1);
     }
 }
 
-function render(indexOfPokemon, i) {
+
+function render(pokemon, index) {
     
-    let currentPokemon = allPokemon[indexOfPokemon];
-    let renderPokemonIndex = currentPokemon['id']
-    let renderTypesAmount = currentPokemon['types'];
-    let renderPokemonType1 = currentPokemon['types']['0']['type']['name'];
+    let renderTypesAmount = pokemon['types'];
+    let renderPokemonType1 = pokemon['types']['0']['type']['name'];
     let renderPokemonType2 = '';
     let type2Img = '';
     //Überprüfen, ob renderPokemonType2 einen Typ besitzt
     if (renderTypesAmount.length > 1) {
-        renderPokemonType2 = currentPokemon['types']['1']['type']['name']
+        renderPokemonType2 = pokemon['types']['1']['type']['name']
     }
     // Überprüfe, ob renderPokemonType2 einen Wert hat
     if (renderPokemonType2) {
@@ -67,29 +65,29 @@ function render(indexOfPokemon, i) {
     // Img wird mit Daten Attributen versheen die in der der renderDetailView wieder aufgerufen werden
     document.getElementById('pokemonContent').innerHTML +=
         /*html*/`<div class="main-card">
-                    <div id="pokedex${i}" class="pokedex">
-                        <h1 class="pokemon-name">${currentPokemon['name']}</h1>
-                        <img id="pokekomPicture${indexOfPokemon}" class="pokemonPicture" src="${currentPokemon['sprites']['other']['dream_world']['front_default']}" onclick="renderDetailView(${indexOfPokemon + 1})">      
+                    <div id="pokedex${index}" class="pokedex">
+                        <h1 class="pokemon-name">${pokemon['name']}</h1>
+                        <img id="pokekomPicture${index}" class="pokemonPicture" src="${pokemon['sprites']['other']['dream_world']['front_default']}" onclick="renderDetailView(${index + 1})">      
                     </div>
                     <div class="info-container">
                     <div class="types">                        
                         <img class="typeLogo mt-16px p-border" alt="${renderPokemonType1}" src='${pokemonTypes[renderPokemonType1].img}'>
                         ${type2Img}                       
                     </div>
-                    <div class="number-container">#${renderPokemonIndex}</div>
+                    <div class="number-container">#${index + 1}</div>
                     <div class="more-information">Click Pokemon for more informations</div>
                 </div>`;
     // Hintergrundfarbe wird nach Type angepasst
-    document.getElementById(`pokedex${indexOfPokemon}`).style.backgroundColor = pokemonTypes[renderPokemonType1].color;
+    document.getElementById(`pokedex${index}`).style.backgroundColor = pokemonTypes[renderPokemonType1].color;
 }
 
-function load20More(){
+
+function load20More() {
     morePokemonToLoad += 20;
-    document.getElementById('pokemonContent').innerHTML ='';
-    allPokemon=[];
+    document.getElementById('pokemonContent').innerHTML = '';
+    allPokemon = [];
     loadPokemon(morePokemonToLoad);
 }
-
 
 
 function backToPage(i) {
