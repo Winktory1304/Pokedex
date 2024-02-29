@@ -32,21 +32,24 @@ async function init() {
 
 
 async function loadPokemon(twentyMore) {
-    document.getElementById('pokemonContent').innerHTML = '';
-    let start = 1;
-    let end = 5;
+    if (twentyMore === 0) {
+        document.getElementById('pokemonContent').innerHTML = ''; // Inhalt nur beim initialen Laden löschen
+        allPokemon = []; // Array nur beim initialen Laden zurücksetzen
+    }
+    let start = allPokemon.length + 1; //Starte beim nächsten Pokémon nach dem letzten geladenen
+    let end = start + 19; // Lade 20 neue Pokémon
     for (let i = start; i <= end + twentyMore; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
         allPokemon.push(currentPokemon);
-        render(currentPokemon, i - 1);
+        render(currentPokemon, allPokemon.length - 1);
     }
 }
 
 
 function render(pokemon, index) {
-    
+
     let renderTypesAmount = pokemon['types'];
     let renderPokemonType1 = pokemon['types']['0']['type']['name'];
     let renderPokemonType2 = '';
@@ -83,10 +86,10 @@ function render(pokemon, index) {
 
 
 function load20More() {
-    morePokemonToLoad += 20;
-    document.getElementById('pokemonContent').innerHTML = '';
-    allPokemon = [];
-    loadPokemon(morePokemonToLoad);
+    // morePokemonToLoad += 20;
+    // document.getElementById('pokemonContent').innerHTML = '';
+    // allPokemon = [];
+    loadPokemon(20);
 }
 
 
