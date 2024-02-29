@@ -210,7 +210,7 @@ td {
 }
 
 .childInfocontainer1 {
-	border: 5px solid blue;
+	/* border: 5px solid blue; */
 	min-width: 30%;
 	display: flex;
 	justify-content: center;
@@ -225,13 +225,13 @@ td {
 	width: 40%;
 
 	object-fit: contain;
-	border: 5px solid yellow;
+	/* border: 5px solid yellow; */
 
 
 }
 
 .childInfocontainer3 {
-	border: 5px solid green;
+	/* border: 5px solid green; */
 	min-width: 30%;
 	display: flex;
 }

@@ -10,9 +10,9 @@ function renderDetailView(i) {
 
     document.getElementById('pokemonContent').innerHTML +=
         /*html*/ `
-    <div id="detailView" class="detail-view">
+    <div id="detailView${i}" class="detail-view">
         <nav class="NavDetailCard">
-            <button type="button" onclick="backToPage()" class="btn btn-outline-light btn-sm mx-2 "><svg
+            <button type="button" onclick="backToPage(${i})" class="btn btn-outline-light btn-sm mx-2 "><svg
                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-left-short navBackArrow" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"

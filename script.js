@@ -80,7 +80,7 @@ function load20More(){
 
 
 
-function backToPage() {
-    document.getElementById('detailView').classList.add('d-none');
+function backToPage(i) {
+    document.getElementById(`detailView${i}`).classList.add('d-none');
 }
 
