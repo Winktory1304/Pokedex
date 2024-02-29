@@ -34,10 +34,11 @@ async function init() {
 
 async function loadPokemon(j) {
     document.getElementById('pokemonContent').innerHTML = '';
-    for (let i = 1; i <= 20 + j; i++) {
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+    for (let i = 0; i <= 19 + j; i++) {
+        let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
+        
         allPokemon.push(currentPokemon);
         render(i)
         
@@ -45,7 +46,8 @@ async function loadPokemon(j) {
 }
 
 function render(i) {
-
+    
+    let currentPokemon = allPokemon[i];
     let renderPokemonIndex = currentPokemon['id']
     let renderTypesAmount = currentPokemon['types'];
     let renderPokemonType1 = currentPokemon['types']['0']['type']['name'];
@@ -83,6 +85,8 @@ function render(i) {
 
 function load20More(){
     morePokemonToLoad += 20;
+    document.getElementById('pokemonContent').innerHTML ='';
+    allPokemon=[];
     loadPokemon(morePokemonToLoad);
 }
 
