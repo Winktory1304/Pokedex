@@ -40,14 +40,14 @@ async function loadPokemon(j) {
         currentPokemon = await response.json();
         
         allPokemon.push(currentPokemon);
-        render(i)
+        render(i, i);
         
     }
 }
 
-function render(i) {
+function render(indexOfPokemon, i) {
     
-    let currentPokemon = allPokemon[i];
+    let currentPokemon = allPokemon[indexOfPokemon];
     let renderPokemonIndex = currentPokemon['id']
     let renderTypesAmount = currentPokemon['types'];
     let renderPokemonType1 = currentPokemon['types']['0']['type']['name'];
@@ -69,7 +69,7 @@ function render(i) {
         /*html*/`<div class="main-card">
                     <div id="pokedex${i}" class="pokedex">
                         <h1 class="pokemon-name">${currentPokemon['name']}</h1>
-                        <img id="pokekomPicture${i}" class="pokemonPicture" src="${currentPokemon['sprites']['other']['dream_world']['front_default']}" onclick="renderDetailView(${i})">      
+                        <img id="pokekomPicture${indexOfPokemon}" class="pokemonPicture" src="${currentPokemon['sprites']['other']['dream_world']['front_default']}" onclick="renderDetailView(${indexOfPokemon + 1})">      
                     </div>
                     <div class="info-container">
                     <div class="types">                        
@@ -80,7 +80,7 @@ function render(i) {
                     <div class="more-information">Click Pokemon for more informations</div>
                 </div>`;
     // Hintergrundfarbe wird nach Type angepasst
-    document.getElementById(`pokedex${i}`).style.backgroundColor = pokemonTypes[renderPokemonType1].color;
+    document.getElementById(`pokedex${indexOfPokemon}`).style.backgroundColor = pokemonTypes[renderPokemonType1].color;
 }
 
 function load20More(){
