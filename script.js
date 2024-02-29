@@ -1,4 +1,4 @@
-let morePokemonToLoad =20;
+let morePokemonToLoad = 20;
 let currentPokemon;
 let allPokemon = [];
 let pokemonTypes = {
@@ -34,8 +34,7 @@ async function init() {
 
 async function loadPokemon(j) {
     document.getElementById('pokemonContent').innerHTML = '';
-    let start = 20;
-    for (let i = 1; i < start + j; i++) {
+    for (let i = 1; i <= 20 + j; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         let response = await fetch(url);
         currentPokemon = await response.json();
