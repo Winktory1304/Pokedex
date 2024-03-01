@@ -21,26 +21,26 @@ function renderDetailView(i) {
             <p class="navPokedex mx-2 sticky-top">Pokedex</p>
         </nav>
         <div class="detail-view-child">
-            <div class="dcName">${detailLoadedPokemon['name']}</div>
+            <h1 class="dcName">${detailLoadedPokemon['name']}</h1>
             <div class="mainInfoCaontainer">
                 <div class="childInfocontainer1">
                     <table class="InfoTable1">
                         <thead>
                         <tbody>
                             <tr>
-                                <td>ID</td>
+                                <td class ="bold">ID</td>
                                 <td>${i}</td>
                             </tr>
                             <tr>
-                                <td>Height</td>
+                                <td class ="bold">Height</td>
                                 <td>${detailLoadedPokemon['height']}m</td>
                             </tr>
                             <tr>
-                                <td>Weight</td>
+                                <td class ="bold">Weight</td>
                                 <td>${detailLoadedPokemon['weight']}kg</td>
                             </tr>
                             <tr>
-                                <td>Typ</td>
+                                <td class ="bold">Typ</td>
                                 <td>${renderPokemonType1} ${renderPokemonType2}</td>
                             </tr>
                         </tbody>

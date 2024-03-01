@@ -3,6 +3,7 @@ body {
 	margin: 0;
 	box-sizing: border-box;
 	flex-direction: column;
+
 }
 
 .navbar-color {
@@ -15,12 +16,12 @@ body {
 	height: 100vh;
 	overflow: auto;
 	max-width: 100%;
-  justify-content: center;
+	justify-content: center;
 }
 
 
 .main-card {
-	height: 450px;
+	height: 400px;
 	margin: 16px;
 	border: 1px solid lightgray;
 	width: 300px;
@@ -30,9 +31,21 @@ body {
 	-webkit-box-shadow: 5px 5px 16px 5px rgba(0, 0, 0, 0.44);
 	box-shadow: 5px 5px 16px 5px rgba(0, 0, 0, 0.44);
 }
-.typeLogo{
+
+.typeLogo {
 	height: 48px;
 	width: 48px;
+}
+
+.type1-main {
+	display: flex;
+	align-items: center;
+
+}
+
+.type1-child {
+	margin-top: 24px;
+	margin-left: 8px;
 }
 
 .info-container {
@@ -85,7 +98,8 @@ h1::first-letter {
 .mt-16px {
 	margin-top: 24px;
 }
-.navContainer{
+
+.navContainer {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -135,6 +149,7 @@ table.InfoTable1 {
 
 table.InfoTable1 thead th {
 	font-weight: normal;
+	font-size: 24px;
 
 }
 
@@ -235,6 +250,10 @@ td {
 
 }
 
+.bold {
+	font-weight: bold;
+}
+
 .childInfocontainer3 {
 	/* border: 5px solid green; */
 	min-width: 30%;
@@ -244,6 +263,41 @@ td {
 .witdh-100px {
 	min-width: 200px;
 }
-.progress-bar{
+
+.progress-bar {
 	color: black;
+}
+
+@media screen and (max-width: 1165px) {
+	.mainInfoCaontainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.detail-view-child {
+		justify-content: unset;
+
+
+	}
+	table.InfoTable1 {
+		margin-top: 24px;
+		margin-bottom: 24px;
+	
+	}
+	
+	table.InfoTable1 thead th {
+		font-weight: normal;
+		font-size: 24px;
+	
+	}
+	
+	th,
+	td {
+		padding-top: 5px;
+		padding-bottom: 10px;
+		padding-left: 15px;
+		padding-right: 20px;
+	}
+	
 }

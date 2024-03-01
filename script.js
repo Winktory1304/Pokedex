@@ -69,16 +69,19 @@ function render(pokemon, index) {
     document.getElementById('pokemonContent').innerHTML +=
         /*html*/`<div class="main-card">
                     <div id="pokedex${index}" class="pokedex">
-                        <h1 class="pokemon-name">${pokemon['name']}</h1>
+                        <h1 class="pokemon-name">${pokemon['name']} #${index + 1}</h1>
                         <img id="pokekomPicture${index}" class="pokemonPicture" src="${pokemon['sprites']['other']['dream_world']['front_default']}" onclick="renderDetailView(${index + 1})">      
                     </div>
                     <div class="info-container">
-                    <div class="types">                        
-                        <img class="typeLogo mt-16px p-border" alt="${renderPokemonType1}" src='${pokemonTypes[renderPokemonType1].img}'>
-                        ${type2Img}                       
-                    </div>
-                    <div class="number-container">#${index + 1}</div>
-                    <div class="more-information">Click Pokemon for more informations</div>
+                    <div class="types">
+                        <div class="type1-main">                        
+                            <img class="typeLogo mt-16px p-border" alt="${renderPokemonType1}" src='${pokemonTypes[renderPokemonType1].img}'><div class="type1-child">${renderPokemonType1}</div>
+                        </div>
+                        <div class="type1-main">
+                            ${type2Img}<div class="type1-child">${renderPokemonType2}</div> 
+                        </div>                      
+                    </div>                    
+                    <!-- <div class="more-information">Click Pokemon for more informations</div> -->
                 </div>`;
     // Hintergrundfarbe wird nach Type angepasst
     document.getElementById(`pokedex${index}`).style.backgroundColor = pokemonTypes[renderPokemonType1].color;
