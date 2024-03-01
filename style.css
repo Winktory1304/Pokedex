@@ -299,5 +299,8 @@ td {
 		padding-left: 15px;
 		padding-right: 20px;
 	}
-	
+	.dcName{
+		font-size: 36px;
+		margin: 12px;
+	}
 }
