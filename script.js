@@ -1,6 +1,7 @@
 let morePokemonToLoad = 20;
 let currentPokemon;
 let allPokemon = [];
+let allPokemonNames = []; // Dieses Array wird die Namen aller Pokémon speichern
 let pokemonTypes = {
     'normal': { 'color': '#A8A878', 'img': '/img/normal.png' },
     'fire': { 'color': '#F08030', 'img': '/img/fire.png' },
@@ -80,8 +81,7 @@ function render(pokemon, index) {
                         <div class="type1-main">
                             ${type2Img}<div class="type1-child">${renderPokemonType2}</div> 
                         </div>                      
-                    </div>                    
-                    <!-- <div class="more-information">Click Pokemon for more informations</div> -->
+                    </div>                 
                 </div>`;
     // Hintergrundfarbe wird nach Type angepasst
     document.getElementById(`pokedex${index}`).style.backgroundColor = pokemonTypes[renderPokemonType1].color;
@@ -97,11 +97,10 @@ function backToPage(i) {
     document.getElementById(`detailView${i}`).classList.add('d-none');
 }
 
+
 function searchPokemonInput() {
     let pokemonInput = document.getElementById('pokemonSearchInput').value;
     pokemonInput = pokemonInput.toLowerCase(); // Alles wird in lowerCase String convertiert
-
-
     if (pokemonInput.length >= 2 && /^[a-zA-Z]+$/.test(pokemonInput)) { //check ob Input mehr als drei Zeichen hat und nur aus Buchstaben besteht 
         searchPokemon(pokemonInput);
     } else {
