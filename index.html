@@ -21,17 +21,37 @@
     <nav class="navbar bg-body-tertiary d-flex py-0">
         <div class="container-fluid navbar-color pb-3 navContainer">
             <a class="navbar-brand"><img src="img/pokemonlogo.png" class="img-fluid" onclick="renderDetailView()"></a>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search your Pokemon" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Search</button>
-            </form>
+            <div class="d-flex" role="search">
+                <input class="form-control me-2" required type="text" onkeydown="searchPokemonInput()" id="pokemonSearchInput"
+                    placeholder="Search your Pokemon" aria-label="Search">
+                <button class="btn btn-primary" onclick="searchPokemonInput()" type="submit">Search</button>
+            </div>
         </div>
 
     </nav>
-    <div id="pokemonContent" class="pokemonContent">  
+    <div id="pokemonContent" class="pokemonContent">
     </div>
     <button class="btn btn-primary" onclick="load20More()">load more</button>
     <div id="detailViewContent"></div>
+
+    <!-- Modal  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Falsche Eingabe</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Es müssen min 3 Buchstaben eeingegeben werden.
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

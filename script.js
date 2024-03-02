@@ -89,9 +89,6 @@ function render(pokemon, index) {
 
 
 function load20More() {
-    // morePokemonToLoad += 20;
-    // document.getElementById('pokemonContent').innerHTML = '';
-    // allPokemon = [];
     loadPokemon(20);
 }
 
@@ -99,4 +96,32 @@ function load20More() {
 function backToPage(i) {
     document.getElementById(`detailView${i}`).classList.add('d-none');
 }
+
+function searchPokemonInput() {
+    let pokemonInput = document.getElementById('pokemonSearchInput').value;
+    pokemonInput = pokemonInput.toLowerCase(); // Alles wird in lowerCase String convertiert
+
+
+    if (pokemonInput.length >= 2 && /^[a-zA-Z]+$/.test(pokemonInput)) { //check ob Input mehr als drei Zeichen hat und nur aus Buchstaben besteht 
+        searchPokemon(pokemonInput);
+    } else {
+        loadPokemon(0);
+    }
+}
+
+
+function searchPokemon(pokemonName) {
+    let pokemonContentElement = document.getElementById('pokemonContent');
+    pokemonContentElement.innerHTML = '';
+    let foundPokemon = allPokemon.filter(pokemon => pokemon.name.toLowerCase().includes(pokemonName.toLowerCase()));
+    if (foundPokemon.length > 0) {
+        foundPokemon.forEach(pokemon => {
+            render(pokemon, allPokemon.indexOf(pokemon)); // Verwende die vorhandene render Funktion, um jedes gefundene Pokémon anzuzeigen
+        });
+    } else {
+        pokemonContentElement.innerHTML = `<p>Kein Pokémon mit dem Namen "${pokemonName}" gefunden.</p>`; // Zeige eine Nachricht an, wenn kein Pokémon gefunden wurde
+    }
+
+}
+
 
