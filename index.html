@@ -20,10 +20,14 @@
 <body onload="init()">
     <nav class="navbar bg-body-tertiary d-flex py-0">
         <div class="container-fluid navbar-color pb-3 navContainer">
-            <a class="navbar-brand"><img src="img/pokemonlogo.png" class="img-fluid" onclick="renderDetailView()"></a>
+            <a class="navbar-brand">
+                <img class="startImg" src="img/start.png">
+                <img src="img/pokemonlogo.png" class="img-fluid" onclick="renderDetailView()">
+                <img class="startImg" src="img/start.png">
+            </a>
             <div class="d-flex" role="search">
-                <input class="form-control me-2" required type="text" onkeydown="searchPokemonInput()" id="pokemonSearchInput"
-                    placeholder="Search your Pokemon" aria-label="Search">                
+                <input class="form-control me-2" required type="text" onkeydown="searchPokemonInput()"
+                    id="pokemonSearchInput" placeholder="Search your Pokemon" aria-label="Search">
             </div>
         </div>
 
@@ -32,8 +36,36 @@
     </div>
     <button class="btn btn-primary" onclick="load20More()">load more</button>
     <div id="detailViewContent"></div>
+    <div id="loadingScreen" class="loader">
+        <div class="loaderChild" >
+            <div class="spinner-grow text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
 
-    
+
 </body>
 
 </html>

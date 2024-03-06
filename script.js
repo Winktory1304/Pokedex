@@ -26,9 +26,23 @@ let pokemonTypes = {
 
 
 async function init() {
+    showLoadingScreen();   
+    // Simuliere das Laden von Daten mit einer Verzögerung
+    await new Promise(resolve => setTimeout(resolve, 2000)); // Angenommen, hier werden Daten geladen
+    hideLoadingScreen();
     await loadPokemon(0);
     // await renderPokemonInfo();
     await render();
+}
+
+
+function showLoadingScreen() {
+    document.getElementById('loadingScreen').style.display = 'block';
+}
+
+
+function hideLoadingScreen() {
+    document.getElementById('loadingScreen').style.display = 'none';
 }
 
 
