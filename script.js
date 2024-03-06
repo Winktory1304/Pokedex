@@ -50,7 +50,16 @@ async function loadPokemon(twentyMore) {
 
 
 function render(pokemon, index) {
+    let { renderPokemonType1, renderPokemonType2, type2Img } = checkHowManyTypes(pokemon, pokemonTypes);
+    let pokemonContent = createPokemonContent(pokemon, index, pokemonTypes, renderPokemonType1, renderPokemonType2, type2Img);
+    document.getElementById('pokemonContent').innerHTML += pokemonContent;
+    // Hintergrundfarbe wird nach Type angepasst
+    document.getElementById(`pokedex${index}`).style.backgroundColor = pokemonTypes[renderPokemonType1].color;
 
+}
+
+
+function checkHowManyTypes(pokemon, pokemonTypes) {
     let renderTypesAmount = pokemon['types'];
     let renderPokemonType1 = pokemon['types']['0']['type']['name'];
     let renderPokemonType2 = '';
@@ -58,33 +67,31 @@ function render(pokemon, index) {
     //Überprüfen, ob renderPokemonType2 einen Typ besitzt
     if (renderTypesAmount.length > 1) {
         renderPokemonType2 = pokemon['types']['1']['type']['name']
-    }
-    // Überprüfe, ob renderPokemonType2 einen Wert hat
-    if (renderPokemonType2) {
-        // Wenn renderPokemonType2 einen "truthy" Wert hat, erstelle das Bild-Tag für den zweiten Typ
         type2Img = `<img class="typeLogo mt-16px p-border" alt="${renderPokemonType2}" src='${pokemonTypes[renderPokemonType2].img}'></img>`
-    } else {
-        type2Img = '';
     }
+    return { renderPokemonType1, renderPokemonType2, type2Img }
+}
+
+
+function createPokemonContent(pokemon, index, pokemonTypes, renderPokemonType1, renderPokemonType2, type2Img) {
     // Img wird mit Daten Attributen versheen die in der der renderDetailView wieder aufgerufen werden
-    document.getElementById('pokemonContent').innerHTML +=
-        /*html*/`<div class="main-card">
-                    <div id="pokedex${index}" class="pokedex">
-                        <h1 class="pokemon-name">${pokemon['name']} #${index + 1}</h1>
-                        <img id="pokekomPicture${index}" class="pokemonPicture" src="${pokemon['sprites']['other']['dream_world']['front_default']}" onclick="renderDetailView(${index + 1})">      
+    let htmlPokemonContent =
+    /*html*/`<div class="main-card">
+                <div id="pokedex${index}" class="pokedex">
+                    <h1 class="pokemon-name">${pokemon['name']} #${index + 1}</h1>
+                    <img id="pokekomPicture${index}" class="pokemonPicture" src="${pokemon['sprites']['other']['dream_world']['front_default']}" onclick="renderDetailView(${index + 1})">      
+                </div>
+                <div class="info-container">
+                <div class="types">
+                    <div class="type1-main">                        
+                        <img class="typeLogo mt-16px p-border" alt="${renderPokemonType1}" src='${pokemonTypes[renderPokemonType1].img}'><div class="type1-child">${renderPokemonType1}</div>
                     </div>
-                    <div class="info-container">
-                    <div class="types">
-                        <div class="type1-main">                        
-                            <img class="typeLogo mt-16px p-border" alt="${renderPokemonType1}" src='${pokemonTypes[renderPokemonType1].img}'><div class="type1-child">${renderPokemonType1}</div>
-                        </div>
-                        <div class="type1-main">
-                            ${type2Img}<div class="type1-child">${renderPokemonType2}</div> 
-                        </div>                      
-                    </div>                 
-                </div>`;
-    // Hintergrundfarbe wird nach Type angepasst
-    document.getElementById(`pokedex${index}`).style.backgroundColor = pokemonTypes[renderPokemonType1].color;
+                    <div class="type1-main">
+                        ${type2Img}<div class="type1-child">${renderPokemonType2}</div> 
+                    </div>                      
+                </div>                 
+            </div>`;
+    return htmlPokemonContent;
 }
 
 
