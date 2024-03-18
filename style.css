@@ -28,6 +28,11 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+.imgPokedex{
+	height: 48px;
+	margin-right: 48px;
+}
 .pokemonContent {
 	display: flex;
 	flex-wrap: wrap;
